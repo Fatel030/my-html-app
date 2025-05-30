@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社交與職場互動技能互動指南</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .nav-link.active {
+            font-weight: bold;
+            color: #0D9488; /* teal-600 */
+            border-bottom: 2px solid #0D9488;
+        }
+        .accordion-content {
+            display: none;
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .tab-button.active {
+            background-color: #0D9488; /* teal-600 */
+            color: white;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+    </head>
+<body class="bg-stone-100 text-neutral-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="font-bold text-xl text-teal-700">互動指南</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-neutral-700 hover:text-teal-600 hover:bg-stone-50">首頁</a>
+                        <a href="#communication" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-neutral-700 hover:text-teal-600 hover:bg-stone-50">溝通基石</a>
+                        <a href="#connection" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-neutral-700 hover:text-teal-600 hover:bg-stone-50">建立連結</a>
+                        <a href="#workplace" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-neutral-700 hover:text-teal-600 hover:bg-stone-50">職場人際</a>
+                        <a href="#challenges" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-neutral-700 hover:text-teal-600 hover:bg-stone-50">應對挑戰</a>
+                        <a href="#growth" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-neutral-700 hover:text-teal-600 hover:bg-stone-50">策略成長</a>
+                        <a href="#conclusion" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-neutral-700 hover:text-teal-600 hover:bg-stone-50">結語</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-neutral-400 hover:text-teal-600 hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500">
+                        <span class="sr-only">開啟主選單</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-neutral-700 hover:text-teal-600 hover:bg-stone-50">首頁</a>
+                <a href="#communication" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-neutral-700 hover:text-teal-600 hover:bg-stone-50">溝通基石</a>
+                <a href="#connection" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-neutral-700 hover:text-teal-600 hover:bg-stone-50">建立連結</a>
+                <a href="#workplace" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-neutral-700 hover:text-teal-600 hover:bg-stone-50">職場人際</a>
+                <a href="#challenges" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-neutral-700 hover:text-teal-600 hover:bg-stone-50">應對挑戰</a>
+                <a href="#growth" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-neutral-700 hover:text-teal-600 hover:bg-stone-50">策略成長</a>
+                <a href="#conclusion" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-neutral-700 hover:text-teal-600 hover:bg-stone-50">結語</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        
+        <section id="home" class="content-section active">
+            <div class="bg-white shadow-xl rounded-lg p-6 md:p-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-teal-700 mb-6 text-center">社交與職場互動精進指南</h1>
+                <p class="text-lg text-neutral-700 mb-4 leading-relaxed">歡迎來到社交與職場互動精進互動指南。在當代社會，有效應對複雜的人際與職場環境，已成為個人成長與職涯發展的關鍵。本指南旨在將「社交與職場互動精進指南：後天學習的關鍵能力」報告中的核心概念，以互動和易於理解的方式呈現。</p>
+                <p class="text-lg text-neutral-700 mb-6 leading-relaxed">這些後天可學習的技能，不僅影響日常社交品質，更關聯到專業領域的協作效率、衝突解決、個人聲譽及晉升機會。讓我們一同探索如何精進這些能力，釋放個人潛力，建立有意義的連結。</p>
+                <div class="bg-amber-100 border-l-4 border-amber-500 text-amber-700 p-4 rounded-md mb-6" role="alert">
+                    <p class="font-bold">你知道嗎？</p>
+                    <p>許多高薪職位已將「同理心」、「善於傾聽」和「善於建立融洽關係」列為核心招聘要求。這些不再僅是「軟實力」，而是職場上的「硬通貨」。</p>
+                </div>
+                 <div class="text-center mt-8">
+                    <button onclick="navigateToSection('communication')" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                        開始探索第一章：溝通基石
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="communication" class="content-section">
+            <div class="bg-white shadow-xl rounded-lg p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-teal-700 mb-6">第一章：溝通基石：主動傾聽與清晰表達</h2>
+                <p class="text-neutral-700 mb-6 leading-relaxed">溝通是所有人際互動的基礎。本章將探討有效溝通的兩大核心支柱：主動傾聽的藝術，以及清晰表達的技巧。精進這些技能，能顯著提升您的社交與職場關係品質。</p>
+
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 accordion-trigger cursor-pointer flex justify-between items-center">
+                        <span>主動傾聽：理解的藝術</span>
+                        <span class="arrow-icon transition-transform duration-300 transform">▼</span>
+                    </h3>
+                    <div class="accordion-content bg-stone-50 p-4 rounded-md border border-neutral-200">
+                        <p class="text-neutral-700 mb-4">主動傾聽是專注於說話者訊息、深入理解其意圖與情感，並給予適當回應的動態過程。它能提高會議成效、減少摩擦，並建立信任。</p>
+                        <p class="text-neutral-700 mb-2 font-semibold">四種傾聽風格：</p>
+                        <ul class="list-disc list-inside text-neutral-700 mb-4 space-y-1">
+                            <li><strong>分析型：</strong>客觀分析問題，適用於需邏輯判斷的場合。</li>
+                            <li><strong>關聯型：</strong>建立人際關係、了解情緒，適用於需情感支持的社交情境。</li>
+                            <li><strong>批判型：</strong>評估判斷內容合理性，適用於需快速決策的場景。</li>
+                            <li><strong>任務型：</strong>高效完成任務，適用於工作或緊急狀況。</li>
+                        </ul>
+                        <p class="text-neutral-700 mb-2 font-semibold">主動傾聽的五個關鍵技巧：</p>
+                        <ol class="list-decimal list-inside text-neutral-700 space-y-2">
+                            <li><strong class="text-amber-700">專注訊息：</strong>將關注焦點放在說話者想傳達的訊息，避免插入自身經歷。</li>
+                            <li><strong class="text-amber-700">減少分心：</strong>避免使用手機或受其他外部因素干擾，集中注意力。</li>
+                            <li><strong class="text-amber-700">重述確認：</strong>重述對方的話，確認理解，提供整理思緒的緩衝。</li>
+                            <li><strong class="text-amber-700">注意非語言線索：</strong>留意語調、表情、肢體語言，並運用自身非語言線索回應。</li>
+                            <li><strong class="text-amber-700">建設性提問：</strong>提出開放式、探究性問題，帶來新觀點，產生積極雙向對話。</li>
+                        </ol>
+                        <p class="text-neutral-700 mt-4"><strong>重要提醒：</strong>僅僅傾聽不足夠，在傾聽後<strong class="text-red-600">採取行動</strong>是建立信任和心理安全感的關鍵。</p>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                     <h3 class="text-xl font-semibold text-teal-600 mb-3 accordion-trigger cursor-pointer flex justify-between items-center">
+                        <span>溝通的「雙重閘門」效應</span>
+                        <span class="arrow-icon transition-transform duration-300 transform">▼</span>
+                    </h3>
+                    <div class="accordion-content bg-stone-50 p-4 rounded-md border border-neutral-200">
+                        <p class="text-neutral-700 mb-4">溝通的本質可被理解為一種「雙重閘門」效應：</p>
+                        <div class="flex flex-col md:flex-row items-center justify-around text-center space-y-4 md:space-y-0 md:space-x-4">
+                            <div class="p-4 border border-teal-500 rounded-lg shadow-sm w-full md:w-2/5">
+                                <h4 class="font-semibold text-teal-600 mb-2">閘門一：清晰發送</h4>
+                                <p class="text-sm text-neutral-600">訊息必須從發送者清晰發出，包括語言明確性與非語言一致性。</p>
+                            </div>
+                            <div class="text-2xl text-teal-600 font-bold">&harr;</div>
+                            <div class="p-4 border border-amber-500 rounded-lg shadow-sm w-full md:w-2/5">
+                                <h4 class="font-semibold text-amber-600 mb-2">閘門二：有效接收</h4>
+                                <p class="text-sm text-neutral-600">訊息必須被接收者有效且準確地接收和理解，仰賴主動傾聽與非語言解讀。</p>
+                            </div>
+                        </div>
+                        <p class="text-neutral-700 mt-4">任何一個閘門出問題（表達不清、傾聽不專注等），溝通就會失敗，導致誤解與摩擦。</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 accordion-trigger cursor-pointer flex justify-between items-center">
+                        <span>清晰表達：傳遞訊息的藝術</span>
+                        <span class="arrow-icon transition-transform duration-300 transform">▼</span>
+                    </h3>
+                    <div class="accordion-content bg-stone-50 p-4 rounded-md border border-neutral-200">
+                        <p class="text-neutral-700 mb-4">清晰表達關乎如何將訊息精準無誤地傳遞給對方。</p>
+                        <ul class="list-disc list-inside text-neutral-700 space-y-2">
+                            <li><strong>清晰簡潔：</strong>明確傳達重點，避免冗餘信息和流行語。例如，將「稍後聯絡」改為「週四下午3點確認專案進度」。</li>
+                            <li><strong>多種模式：</strong>根據目標和聽眾，選擇文字、視覺、口語、非語言等溝通模式，或組合使用。</li>
+                            <li><strong>注意語氣：</strong>語氣應與內容匹配。換位思考，考慮接收者感受。</li>
+                            <li><strong>留意非語言線索：</strong>眼神、姿勢、手勢、表情比言語更能傳達情感。保持非語言與言語一致以增加信任。改善技巧包括開放姿態、穩定語速、眼神交流。</li>
+                        </ul>
+                        <p class="text-neutral-700 mt-4"><strong>非語言溝通角色：</strong>重複、矛盾、替代、補充、強調。一致性增加信任，不一致則產生困惑。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="connection" class="content-section">
+            <div class="bg-white shadow-xl rounded-lg p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-teal-700 mb-6">第二章：建立連結：同理心、信任與融洽關係</h2>
+                <p class="text-neutral-700 mb-6 leading-relaxed">建立有意義的人際連結，核心在於培養同理心、建立深厚信任，並營造融洽的互動氛圍。這些是維繫長期健康關係的關鍵。</p>
+
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 accordion-trigger cursor-pointer flex justify-between items-center">
+                        <span>同理心：情感共鳴的橋樑</span>
+                        <span class="arrow-icon transition-transform duration-300 transform">▼</span>
+                    </h3>
+                    <div class="accordion-content bg-stone-50 p-4 rounded-md border border-neutral-200">
+                        <p class="text-neutral-700 mb-4">同理心是理解他人情緒、需求和想法的能力。它與同情不同（同理心是設身處地感受，同情是為他人難過）。</p>
+                        <div class="my-4 p-3 bg-red-50 border-l-4 border-red-400 text-red-700">
+                            <p class="font-bold">警訊：</p>
+                            <p>研究顯示大學生同理心水平下降40%，凸顯培養的迫切性。</p>
+                        </div>
+                        <div class="chart-container my-6">
+                            <canvas id="empathyChart"></canvas>
+                        </div>
+                        <p class="text-neutral-700 mb-2 font-semibold">培養同理心的方法：</p>
+                        <ul class="list-disc list-inside text-neutral-700 mb-4 space-y-1">
+                            <li>積極傾聽，專注對方所說和感受。</li>
+                            <li>反映對方的話，確保理解。</li>
+                            <li>傾聽對方感受的原因，考慮其他壓力因素。</li>
+                            <li>承認不理解也沒關係，重要的是關心並嘗試連結。</li>
+                            <li>利用媒體、多詢問、多傾聽、確認感受、觀賞影視作品練習辨識情緒。</li>
+                        </ul>
+                        <p class="text-neutral-700 mb-2 font-semibold">同理心的障礙：</p>
+                        <ul class="list-disc list-inside text-neutral-700 mb-4 space-y-1">
+                            <li>將話題轉回自己、未聽先建議、比較痛苦、說教、分析對方感受、輕視貶低、強行灌輸正能量。</li>
+                        </ul>
+                        <p class="text-neutral-700 mt-4"><strong>關鍵提醒：</strong>保持同理心會耗盡精力，<strong class="text-amber-700">設定界限</strong>並<strong class="text-amber-700">自我關懷</strong>至關重要。同理心是建立信任的「前置條件」。</p>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 accordion-trigger cursor-pointer flex justify-between items-center">
+                        <span>信任：關係的基石</span>
+                        <span class="arrow-icon transition-transform duration-300 transform">▼</span>
+                    </h3>
+                    <div class="accordion-content bg-stone-50 p-4 rounded-md border border-neutral-200">
+                        <p class="text-neutral-700 mb-4">信任是透過脆弱、一致性和正直贏得的。建立緩慢，破壞迅速，修復成本高。</p>
+                        <p class="text-neutral-700 mb-2 font-semibold">建立信任的四大核心原則：</p>
+                        <ul class="list-disc list-inside text-neutral-700 mb-4 grid grid-cols-1 md:grid-cols-2 gap-2">
+                            <li><strong>能力 (Competence):</strong> 相信對方能做好事情。</li>
+                            <li><strong>一致性 (Consistency):</strong> 相信對方會持續做好。</li>
+                            <li><strong>正直 (Integrity):</strong> 相信對方會做正確的事。</li>
+                            <li><strong>同情 (Compassion):</strong> 相信對方會關懷善意行事。</li>
+                        </ul>
+                        <p class="text-neutral-700 mb-2 font-semibold">建立信任的九個關鍵行為 (點擊查看更多)：</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div class="p-3 bg-white border border-neutral-300 rounded-md shadow-sm hover:shadow-lg transition-shadow"><strong>1. 言出必行：</strong>遵守承諾。</div>
+                            <div class="p-3 bg-white border border-neutral-300 rounded-md shadow-sm hover:shadow-lg transition-shadow"><strong>2. 有效溝通：</strong>開放、誠實、透明。</div>
+                            <div class="p-3 bg-white border border-neutral-300 rounded-md shadow-sm hover:shadow-lg transition-shadow"><strong>3. 實踐同理心：</strong>設身處地理解。</div>
+                            <div class="p-3 bg-white border border-neutral-300 rounded-md shadow-sm hover:shadow-lg transition-shadow"><strong>4. 情緒回應能力：</strong>積極傾聽，調整支持。</div>
+                            <div class="p-3 bg-white border border-neutral-300 rounded-md shadow-sm hover:shadow-lg transition-shadow"><strong>5. 深思熟慮後行動：</strong>評估能力與後果。</div>
+                            <div class="p-3 bg-white border border-neutral-300 rounded-md shadow-sm hover:shadow-lg transition-shadow"><strong>6. 連結儀式：</strong>小而有意的行動。</div>
+                            <div class="p-3 bg-white border border-neutral-300 rounded-md shadow-sm hover:shadow-lg transition-shadow"><strong>7. 承認錯誤：</strong>坦誠面對過失。</div>
+                            <div class="p-3 bg-white border border-neutral-300 rounded-md shadow-sm hover:shadow-lg transition-shadow"><strong>8. 一致可靠：</strong>定期溝通，遵守承諾。</div>
+                            <div class="p-3 bg-white border border-neutral-300 rounded-md shadow-sm hover:shadow-lg transition-shadow"><strong>9. 善用非語言：</strong>透過身體語言連結。</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 accordion-trigger cursor-pointer flex justify-between items-center">
+                        <span>融洽關係：和諧互動的催化劑</span>
+                        <span class="arrow-icon transition-transform duration-300 transform">▼</span>
+                    </h3>
+                    <div class="accordion-content bg-stone-50 p-4 rounded-md border border-neutral-200">
+                        <p class="text-neutral-700 mb-4">融洽關係是人際互動中和諧、理解和信任的狀態，為有效溝通和深層連結奠定基礎。</p>
+                        <p class="text-neutral-700 mb-2 font-semibold">建立融洽關係的要素：</p>
+                        <ul class="list-disc list-inside text-neutral-700 space-y-1">
+                            <li>積極傾聽</li>
+                            <li>開放和誠實的溝通</li>
+                            <li>正面的非語言溝通 (微笑、眼神交流)</li>
+                            <li>一致性和可靠性</li>
+                            <li>同理心和理解</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="workplace" class="content-section">
+            <div class="bg-white shadow-xl rounded-lg p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-teal-700 mb-6">第三章：職場人際：專業禮儀與協作智慧</h2>
+                <p class="text-neutral-700 mb-6 leading-relaxed">職場人際關係的成功，不僅依賴個人魅力，更根植於對專業禮儀的遵循和協作智慧的實踐。這兩者共同塑造積極高效的職場環境。</p>
+                
+                <div class="mb-4">
+                    <button class="tab-button w-full sm:w-auto bg-neutral-200 hover:bg-teal-500 text-teal-700 hover:text-white font-semibold py-2 px-4 rounded-t-lg focus:outline-none active" onclick="openTab(event, 'etiquette-tab', 'workplace-tabs')">專業禮儀</button>
+                    <button class="tab-button w-full sm:w-auto bg-neutral-200 hover:bg-teal-500 text-teal-700 hover:text-white font-semibold py-2 px-4 rounded-t-lg focus:outline-none" onclick="openTab(event, 'collaboration-tab', 'workplace-tabs')">協作智慧</button>
+                </div>
+
+                <div id="workplace-tabs">
+                    <div id="etiquette-tab" class="tab-content active bg-stone-50 p-4 rounded-b-lg rounded-tr-lg border border-neutral-200">
+                        <h4 class="text-lg font-semibold text-teal-600 mb-3">專業禮儀：和諧職場的基石</h4>
+                        <p class="text-neutral-700 mb-4">禮貌是職場基本期待。和善表情、真誠態度能減少衝突。缺乏禮儀會降低專業信任。</p>
+                        <ul class="list-disc list-inside text-neutral-700 space-y-2 mb-4">
+                            <li><strong>溝通表達藝術：</strong>話語包裝，多說正面，建議先讚美後提出。會議中清晰、專業。</li>
+                            <li><strong>適度距離與尊重：</strong>避免過於親密或侵入私人空間，不談論八卦。</li>
+                            <li><strong>體貼細心：</strong>觀察並體察他人需求，如主動加影印紙、倒咖啡。</li>
+                            <li><strong>積極貢獻：</strong>為他人鼓掌，釋放善意，保持笑容，提升工作能力。</li>
+                        </ul>
+                        <div class="p-3 bg-amber-100 border-l-4 border-amber-500 text-amber-700 rounded-md">
+                            <p><strong>核心觀點：</strong>真正的禮貌不僅是表面功夫，更包括為他人著想的同理心。</p>
+                        </div>
+                    </div>
+
+                    <div id="collaboration-tab" class="tab-content bg-stone-50 p-4 rounded-b-lg rounded-tr-lg border border-neutral-200">
+                        <h4 class="text-lg font-semibold text-teal-600 mb-3">協作智慧：團隊合作的藝術</h4>
+                        <p class="text-neutral-700 mb-4">團隊協作能提高生產力、促創新、增強問題解決能力及員工滿意度。</p>
+                        <p class="text-neutral-700 mb-2 font-semibold">有效協作特點：</p>
+                        <ul class="list-disc list-inside text-neutral-700 mb-4 space-y-1">
+                            <li><strong>團隊腦力激盪：</strong>鼓勵成員貢獻想法。</li>
+                            <li><strong>多元化團隊：</strong>包容不同才能、技能和背景。</li>
+                            <li><strong>開放誠實討論：</strong>願意提問、深入探討、表達不同意見。</li>
+                        </ul>
+                         <p class="text-neutral-700 mb-2 font-semibold">協作核心價值：</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mb-4">
+                            <div class="p-2 bg-white border border-teal-300 rounded text-center"><strong class="text-teal-600">清晰 (Clarity)</strong></div>
+                            <div class="p-2 bg-white border border-teal-300 rounded text-center"><strong class="text-teal-600">效率 (Efficiency)</strong></div>
+                            <div class="p-2 bg-white border border-teal-300 rounded text-center"><strong class="text-teal-600">積極 (Positivity)</strong></div>
+                            <div class="p-2 bg-white border border-teal-300 rounded text-center"><strong class="text-teal-600">信任 (Trust)</strong></div>
+                            <div class="p-2 bg-white border border-teal-300 rounded text-center"><strong class="text-teal-600">問責 (Accountability)</strong></div>
+                        </div>
+                        <p class="text-neutral-700 mb-2 font-semibold">增強團隊協作實踐 (部分列舉)：</p>
+                        <ul class="list-disc list-inside text-neutral-700 space-y-1">
+                            <li>強調協作價值，營造協作氛圍。</li>
+                            <li>建立溝通慣例與合作守則。</li>
+                            <li>鼓勵共同創造與開誠布公的溝通。</li>
+                            <li>領導者以身作則，分配團隊互動時間。</li>
+                            <li>利用共享工具作為事實的單一來源。</li>
+                        </ul>
+                        <p class="text-neutral-700 mt-4"><strong>關鍵轉變：</strong>員工不僅是「文化適應者」，更是「文化塑造者」，透過積極貢獻塑造正向職場文化。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="challenges" class="content-section">
+            <div class="bg-white shadow-xl rounded-lg p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-teal-700 mb-6">第四章：應對挑戰：處理困難互動與衝突解決</h2>
+                <p class="text-neutral-700 mb-6 leading-relaxed">在人際與職場互動中，困難情境與衝突在所難免。學會有效處理這些挑戰，是維護關係、促進成長的關鍵能力。</p>
+
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 accordion-trigger cursor-pointer flex justify-between items-center">
+                        <span>處理困難互動與棘手對話</span>
+                        <span class="arrow-icon transition-transform duration-300 transform">▼</span>
+                    </h3>
+                    <div class="accordion-content bg-stone-50 p-4 rounded-md border border-neutral-200">
+                        <p class="text-neutral-700 mb-2 font-semibold">心態調整：</p>
+                        <ul class="list-disc list-inside text-neutral-700 mb-4 space-y-1">
+                            <li>專注改變互動模式，非試圖改變人。</li>
+                            <li>對事不對人，避免指責。</li>
+                            <li>觀察對方，了解其難相處的真正原因。</li>
+                            <li>秉持公事公辦的中立心態。</li>
+                        </ul>
+                        <p class="text-neutral-700 mb-2 font-semibold">溝通前準備：</p>
+                        <ul class="list-disc list-inside text-neutral-700 mb-4 space-y-1">
+                            <li>準備談話要點、目的、關鍵資訊。</li>
+                            <li>選擇合適的時間與地點（中立、私密、無打擾）。</li>
+                            <li>盡早提出關切，避免問題累積。</li>
+                        </ul>
+                        <p class="text-neutral-700 mb-2 font-semibold">溝通中管理情緒與技巧：</p>
+                        <ul class="list-disc list-inside text-neutral-700 mb-4 space-y-1">
+                            <li>意識並識別自身情緒，保持冷靜，對他人同理。</li>
+                            <li>直率而富有同情心，解釋希望達成最佳結果。</li>
+                            <li>積極傾聽，不加評判，總結重述，探究澄清。</li>
+                            <li>避免假設，允許對方陳述觀點。</li>
+                            <li>關注行為，討論具體行為。</li>
+                            <li>少說多聽，使用非暴力溝通 (NVC)。</li>
+                            <li>優先考慮心理安全，緩和開場。</li>
+                        </ul>
+                        <p class="text-neutral-700 mb-2 font-semibold">共同解決問題：</p>
+                        <ul class="list-disc list-inside text-neutral-700 space-y-1">
+                            <li>共同腦力激盪，尋找解決方案。</li>
+                            <li>專注於解決方案和協議，尋找共同點。</li>
+                            <li>達成具體行動計劃，明確步驟、截止日期和責任。</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 accordion-trigger cursor-pointer flex justify-between items-center">
+                        <span>衝突解決：協作共贏的途徑</span>
+                        <span class="arrow-icon transition-transform duration-300 transform">▼</span>
+                    </h3>
+                    <div class="accordion-content bg-stone-50 p-4 rounded-md border border-neutral-200">
+                        <p class="text-neutral-700 mb-4">管理得當的衝突可能是有益的。最佳策略是「預防勝於治療」，從源頭預防衝突升級。</p>
+                        <p class="text-neutral-700 mb-2 font-semibold">協作式衝突解決風格：</p>
+                        <p class="text-neutral-700 mb-4">各方積極合作，尋找滿足所有人核心關切的解決方案，達成雙贏，加強關係。</p>
+                        <p class="text-neutral-700 mb-2 font-semibold">益處：</p>
+                        <ul class="list-disc list-inside text-neutral-700 mb-4 space-y-1">
+                            <li>可持續的雙贏結果。</li>
+                            <li>促進創新與創造力。</li>
+                            <li>建立更強的關係。</li>
+                            <li>促進更和諧的環境。</li>
+                            <li>避免升級和人身攻擊。</li>
+                        </ul>
+                        <p class="text-neutral-700 mb-2 font-semibold">職場實踐：</p>
+                        <ul class="list-disc list-inside text-neutral-700 space-y-1">
+                            <li>優先開放對話。</li>
+                            <li>探索不同觀點，積極傾聽。</li>
+                            <li>強調共同目標。</li>
+                            <li>鼓勵問責制和共同責任。</li>
+                            <li>主動解決問題，及時處理衝突。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 accordion-trigger cursor-pointer flex justify-between items-center">
+                        <span>常見溝通錯誤與應對策略</span>
+                        <span class="arrow-icon transition-transform duration-300 transform">▼</span>
+                    </h3>
+                    <div class="accordion-content bg-stone-50 p-4 rounded-md border border-neutral-200">
+                        <p class="text-neutral-700 mb-4">溝通錯誤會相互影響，產生「連鎖反應」。以下是一些常見錯誤及應對策略：</p>
+                        <div class="space-y-3">
+                            <div class="p-3 bg-white border border-neutral-300 rounded-md">
+                                <strong class="text-amber-700">錯誤：訊息缺乏清晰度。</strong>
+                                <p class="text-sm text-neutral-600">描述：指示模糊導致誤解。應對：使用AI精煉訊息或仔細組織語言。</p>
+                            </div>
+                             <div class="p-3 bg-white border border-neutral-300 rounded-md">
+                                <strong class="text-amber-700">錯誤：忽視非語言溝通。</strong>
+                                <p class="text-sm text-neutral-600">描述：身體語言、語氣等被忽略。應對：注意觀察並調整自身非語言訊號。</p>
+                            </div>
+                            <div class="p-3 bg-white border border-neutral-300 rounded-md">
+                                <strong class="text-amber-700">錯誤：缺乏反饋與認可。</strong>
+                                <p class="text-sm text-neutral-600">描述：員工未得到及時反饋。應對：建立反饋循環，及時給予認可。</p>
+                            </div>
+                            <div class="p-3 bg-white border border-neutral-300 rounded-md">
+                                <strong class="text-amber-700">錯誤：不鼓勵雙向溝通。</strong>
+                                <p class="text-sm text-neutral-600">描述：自上而下，缺乏員工意見。應對：鼓勵員工發言，確保被傾聽。</p>
+                            </div>
+                            <div class="p-3 bg-white border border-neutral-300 rounded-md">
+                                <strong class="text-amber-700">錯誤：缺乏同理心。</strong>
+                                <p class="text-sm text-neutral-600">描述：難以理解他人感受。應對：練習換位思考，運用情感分析調整溝通。</p>
+                            </div>
+                             <div class="p-3 bg-white border border-neutral-300 rounded-md">
+                                <strong class="text-amber-700">錯誤：被動傾聽。</strong>
+                                <p class="text-sm text-neutral-600">描述：僅聽到未理解。應對：促進有意義的雙向對話，積極參與。</p>
+                            </div>
+                        </div>
+                        <p class="text-neutral-700 mt-4"><strong>重要原則：</strong>「問題是問題，人是人」。專注解決方案，而非人身攻擊或自我懷疑，提升心理韌性。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="growth" class="content-section">
+            <div class="bg-white shadow-xl rounded-lg p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-teal-700 mb-6">第五章：策略成長：個人品牌與專業人脈建立</h2>
+                <p class="text-neutral-700 mb-6 leading-relaxed">在競爭激烈的環境中，主動塑造個人品牌並策略性地建立專業人脈，是提升個人影響力、拓展職涯機會的關鍵。</p>
+
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 accordion-trigger cursor-pointer flex justify-between items-center">
+                        <span>個人品牌：塑造你的專業印記</span>
+                        <span class="arrow-icon transition-transform duration-300 transform">▼</span>
+                    </h3>
+                    <div class="accordion-content bg-stone-50 p-4 rounded-md border border-neutral-200">
+                        <p class="text-neutral-700 mb-4">個人品牌是個人能力、價值觀和個性的體現，是一種有影響力的專業形象。它能助您脫穎而出，獲得商機，建立信任，拓展社交。</p>
+                        <p class="text-neutral-700 mb-2 font-semibold">建立個人品牌的關鍵步驟：</p>
+                        <ol class="list-decimal list-inside text-neutral-700 space-y-2">
+                            <li><strong>認識自己：</strong>了解優勢、動機、喜好，找出品牌價值。</li>
+                            <li><strong>決定期望形象：</strong>思考希望別人用哪三個詞描述你。</li>
+                            <li><strong>確定目標受眾：</strong>根據受眾選擇策略和平台。</li>
+                            <li><strong>思考如何解決他人問題：</strong>定位為問題解決者，強調你能提供的方案。</li>
+                            <li><strong>線上形象一致性：</strong>在各社交平台保持一致專業形象。</li>
+                            <li><strong>現實與數位品牌一致：</strong>言行舉止影響品牌，謹慎維護聲譽。 (這是信任基石)</li>
+                            <li><strong>展現獨特性：</strong>突出與眾不同之處。</li>
+                            <li><strong>持續學習和成長：</strong>保持對行業趨勢的了解，展現適應性和成長心態。</li>
+                        </ol>
+                        <p class="text-neutral-700 mt-4"><strong>洞見：</strong>清晰有價值的個人品牌如同「人脈磁鐵」，能自動吸引連結。</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 accordion-trigger cursor-pointer flex justify-between items-center">
+                        <span>專業人脈建立：擴大你的影響力</span>
+                        <span class="arrow-icon transition-transform duration-300 transform">▼</span>
+                    </h3>
+                    <div class="accordion-content bg-stone-50 p-4 rounded-md border border-neutral-200">
+                        <p class="text-neutral-700 mb-4">建立強大的人脈網絡是職涯成功的關鍵，能拓展社交機會，擴大影響力。</p>
+                        <p class="text-neutral-700 mb-2 font-semibold">有效人脈建立策略：</p>
+                        <ul class="list-disc list-inside text-neutral-700 mb-4 space-y-1">
+                            <li><strong>利用現有連結：</strong>與前同事、同學保持聯繫。</li>
+                            <li><strong>參加人脈活動：</strong>行業活動、會議、研討會。</li>
+                            <li><strong>善用社交媒體：</strong>LinkedIn等平台建立聲譽和網絡。</li>
+                            <li><strong>加入志願者和校友團體。</strong></li>
+                            <li><strong>進行資訊性訪談：</strong>向專業人士尋求見解。</li>
+                            <li><strong>真誠參與：</strong>積極參與，加入相關群組。</li>
+                        </ul>
+                        <p class="text-neutral-700 mb-2 font-semibold">溝通技巧：</p>
+                        <ul class="list-disc list-inside text-neutral-700 space-y-1">
+                            <li>專注建立有意義的連結，提供價值。</li>
+                            <li>練習積極傾聽、提問、電梯演講。</li>
+                            <li>掌握積極的身體語言。</li>
+                            <li>自信接近他人，有效講述你的故事。</li>
+                            <li>持續跟進，培養關係。</li>
+                        </ul>
+                        <p class="text-neutral-700 mt-4"><strong>核心理念：</strong>人脈的本質是「價值交換」。幫助他人，成為資源，實踐互惠原則。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="content-section">
+            <div class="bg-white shadow-xl rounded-lg p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-teal-700 mb-6">結語：持續學習與實踐</h2>
+                <p class="text-neutral-700 mb-4 leading-relaxed">本互動指南闡述了社交與職場互動中的關鍵能力。掌握這些能力的關鍵在於將理論付諸實踐，並持續練習與反思。鼓勵您將所學融入日常互動，從小處著手，不斷嘗試、調整和改進。</p>
+                <p class="text-neutral-700 mb-4 leading-relaxed">人際互動的複雜性與多變性，要求我們保持開放的心態，將學習視為一個終身過程。市場上有豐富的學習資源，如專業書籍、線上課程、工作坊和教練指導。透過不斷學習和實踐，您定能在個人成長和職業發展的道路上取得更大的成功。</p>
+                <div class="bg-teal-50 border-l-4 border-teal-500 text-teal-700 p-4 rounded-md" role="alert">
+                    <p class="font-bold">最後的提醒：</p>
+                    <p>社交與職場能力的學習是一個螺旋上升的過程。每一次互動都是經驗的積累，每一次嘗試都是寶貴的學習機會。保持好奇心，勇於跳出舒適區，將每一次互動都視為提升自我的機會。</p>
+                </div>
+                 <div class="mt-8 text-center">
+                    <a href="#home" onclick="navigateToSection('home')" class="text-amber-600 hover:text-amber-700 font-semibold hover:underline">返回首頁</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-neutral-800 text-neutral-300 py-8 mt-12">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; <span id="currentYear"></span> 社交與職場互動技能互動指南。基於「社交與職場互動精進指南」報告建構。</p>
+            <p class="text-sm mt-1">此為學習與探索工具，非專業諮詢建議。</p>
+        </div>
+    </footer>
+
+    <script>
+        const navLinks = document.querySelectorAll('.nav-link');
+        const contentSections = document.querySelectorAll('.content-section');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function navigateToSection(sectionId) {
+            contentSections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + sectionId) {
+                    link.classList.add('active');
+                }
+            });
+            window.scrollTo(0, 0);
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                mobileMenuButton.querySelector('svg.block').classList.remove('hidden');
+                mobileMenuButton.querySelector('svg.hidden').classList.add('hidden');
+            }
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const sectionId = link.getAttribute('href').substring(1);
+                navigateToSection(sectionId);
+                history.pushState(null, null, '#' + sectionId);
+            });
+        });
+        
+        window.addEventListener('popstate', () => {
+            const sectionId = window.location.hash.substring(1) || 'home';
+            navigateToSection(sectionId);
+        });
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuButton.querySelectorAll('svg').forEach(svg => svg.classList.toggle('hidden'));
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const initialSectionId = window.location.hash.substring(1) || 'home';
+            navigateToSection(initialSectionId);
+
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+            accordionTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const content = trigger.nextElementSibling;
+                    const arrow = trigger.querySelector('.arrow-icon');
+                    if (content.style.display === "block") {
+                        content.style.display = "none";
+                        arrow.classList.remove('rotate-180');
+                    } else {
+                        content.style.display = "block";
+                        arrow.classList.add('rotate-180');
+                    }
+                });
+            });
+            
+            openTab(null, 'etiquette-tab', 'workplace-tabs', true); // Initialize first tab in workplace section
+
+            // Chart.js for Empathy Drop
+            const empathyCtx = document.getElementById('empathyChart');
+            if (empathyCtx) {
+                new Chart(empathyCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['大學生同理心水平變化'],
+                        datasets: [{
+                            label: '變化百分比 (%) [相對於先前水平]',
+                            data: [-40],
+                            backgroundColor: ['rgba(239, 68, 68, 0.6)'], // red-500 with opacity
+                            borderColor: ['rgba(220, 38, 38, 1)'], // red-600
+                            borderWidth: 1,
+                            barPercentage: 0.5,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                suggestedMin: -50,
+                                suggestedMax: 0,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.dataset.label + ': ' + context.raw + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
+        function openTab(event, tabName, tabContainerId, isInitial = false) {
+            let i, tabcontent, tablinks;
+            const container = document.getElementById(tabContainerId);
+            tabcontent = container.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            
+            const parentOfContainer = container.parentElement;
+            tablinks = parentOfContainer.getElementsByClassName("tab-button");
+             for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            
+            if (event && event.currentTarget) {
+                 event.currentTarget.classList.add("active");
+            } else if (isInitial) {
+                // For initial load, find the button corresponding to tabName
+                for (i = 0; i < tablinks.length; i++) {
+                    if (tablinks[i].getAttribute('onclick').includes(`'${tabName}'`)) {
+                        tablinks[i].classList.add("active");
+                        break;
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>
