@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蔡宗諭 - 我的部落格 | 更新區</title>
+    <meta name="description" content="蔡宗諭的部落格，分享個人心得、技術學習筆記、詩作創作過程與生活隨想。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+        }
+        .post-card {
+            display: block; /* Make the whole card clickable */
+        }
+    </style>
+    </head>
+<body class="bg-stone-100 text-neutral-800">
+
+    <header class="bg-white shadow-md py-4">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-teal-700 mb-2">我的部落格</h1>
+            <p class="text-xl md:text-2xl text-neutral-600">分享過程心得與技術學習</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        
+        <section id="blog-posts" class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-teal-600 mb-6 text-center">最新文章</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <a href="blog-post-1.html" class="post-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-xl font-semibold text-teal-700 mb-2">「社交與職場互動指南」創作心得與技術分享</h3>
+                    <p class="text-neutral-500 text-sm mb-3">發佈日期：2025年6月11日</p>
+                    <p class="text-neutral-700 leading-relaxed mb-4">
+                        在這篇文章中，我將分享在製作「社交與職場互動指南」這個互動式網頁應用程式時的心路歷程、所面臨的技術挑戰以及從中獲得的學習收穫。從最初的資訊架構設計到前端程式碼實現的點點滴滴，希望能為有興趣的開發者提供一些啟發。
+                    </p>
+                    <p class="text-amber-600 font-medium">閱讀更多 →</p>
+                </a>
+
+                </div>
+        </section>
+
+        <section id="resources" class="bg-white shadow-xl rounded-lg p-6 md:p-8 mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-teal-600 mb-6 text-center">資源分享</h2>
+            <p class="text-lg text-neutral-700 leading-relaxed mb-6">
+                在這裡，我會分享一些對我有幫助的學習資源、程式碼範例或詩集摘錄，歡迎下載參考。
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <a href="assets/sample_code.zip" download class="block bg-neutral-50 shadow-md rounded-lg p-4 flex items-center space-x-3 hover:shadow-lg transition-shadow">
+                    <span class="text-3xl">💻</span>
+                    <div>
+                        <h3 class="text-lg font-semibold text-teal-700">前端開發常用程式碼片段</h3>
+                        <p class="text-neutral-600 text-sm">包含一些常用的 HTML、CSS、JS 基礎範例。</p>
+                    </div>
+                </a>
+                <a href="assets/poetry_excerpt.pdf" download class="block bg-neutral-50 shadow-md rounded-lg p-4 flex items-center space-x-3 hover:shadow-lg transition-shadow">
+                    <span class="text-3xl">📄</span>
+                    <div>
+                        <h3 class="text-lg font-semibold text-teal-700">詩集《心之光》摘錄</h3>
+                        <p class="text-neutral-600 text-sm">個人詩集部分內容預覽版。</p>
+                    </div>
+                </a>
+                </div>
+            <p class="text-neutral-500 text-sm mt-6 text-center">
+                注意：部分資源需要您點擊下載。請確保您已安裝相關軟體以開啟文件。
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="bg-neutral-800 text-neutral-300 py-8 mt-12">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>© <span id="currentYear"></span> 蔡宗諭。版權所有。</p>
+            <p class="text-sm mt-1"><a href="index.html" class="text-blue-400 hover:underline">返回主頁</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>「社交與職場互動指南」創作心得與技術分享 - 蔡宗諭部落格</title>
+    <meta name="description" content="蔡宗諭分享製作「社交與職場互動指南」應用程式的心得、技術挑戰與學習收穫。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+        }
+        /* 內文可讀性優化 */
+        .article-content p, .article-content ul, .article-content ol {
+            margin-bottom: 1em;
+        }
+        .article-content h3, .article-content h4 {
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            font-weight: 600;
+        }
+        .article-content ul {
+            list-style-type: disc;
+            padding-left: 1.5em;
+        }
+        .article-content ol {
+            list-style-type: decimal;
+            padding-left: 1.5em;
+        }
+    </style>
+    </head>
+<body class="bg-stone-100 text-neutral-800">
+
+    <header class="bg-white shadow-md py-4">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <a href="blog.html" class="text-teal-600 hover:underline">← 返回部落格</a>
+            <h1 class="text-4xl md:text-5xl font-bold text-teal-700 mt-4 mb-2">「社交與職場互動指南」創作心得與技術分享</h1>
+            <p class="text-neutral-500 text-lg">發佈日期：2025年6月11日 | 作者：蔡宗諭</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        
+        <article class="bg-white shadow-xl rounded-lg p-6 md:p-8 article-content">
+            <h2 class="text-2xl font-semibold text-teal-600 mb-4">專案緣起與目標</h2>
+            <p>
+                製作「社交與職場互動指南」互動式網頁應用程式的初衷，源於對現有報告呈現形式的思考。
+                傳統的 PDF 或靜態網頁報告，雖然內容豐富，但在閱讀體驗和互動性方面仍有提升空間。
+                我希望透過一個單頁應用程式 (SPA) 的形式，將報告中的核心知識點，以更生動、易於探索和消化的方式呈現給使用者。
+            </p>
+            <p>
+                我的目標是創造一個直觀、響應式的平台，讓訪客能夠輕鬆點擊、展開資訊，並在互動中加深對社交與職場關鍵能力的理解，將被動閱讀轉化為主動學習。
+            </p>
+
+            <h2 class="text-2xl font-semibold text-teal-600 mb-4 mt-8">設計挑戰與解決方案</h2>
+            <p>
+                這個專案最大的挑戰之一是如何將大量文字內容，有效地拆解並重新組織成適合互動的區塊，同時保持資訊的連貫性和邏輯性。
+            </p>
+            <h3>資訊架構設計</h3>
+            <p>
+                我沒有盲目照搬報告的章節結構，而是根據內容的邏輯關係和使用者探索的路徑，設計了「溝通基石」、「建立連結」等核心區塊，並輔以導覽列快速跳轉。這樣，使用者可以線性學習，也可以直接跳到感興趣的主題。
+            </p>
+            <h3>前端技術選型</h3>
+            <p>
+                我選擇了 **HTML** 作為結構基礎，**Tailwind CSS** 進行快速響應式佈局和美觀樣式，以及 **Vanilla JavaScript** 來處理所有互動邏輯（如手風琴效果、分頁切換、導航滾動）。
+                對於報告中較為量化的數據，雖然不多，但也引入了 **Chart.js** 庫來進行簡單的視覺化呈現，以增強數據的直觀性。
+            </p>
+
+            <h2 class="text-2xl font-semibold text-teal-600 mb-4 mt-8">學習與反思</h2>
+            <p>
+                在專案開發過程中，我對前端開發的整個流程有了更深的理解，特別是在以下幾個方面：
+            </p>
+            <ul>
+                <li><strong>資訊設計的重要性：</strong> 好的介面設計不僅是美觀，更是資訊的有效傳遞。</li>
+                <li><strong>Tailwind CSS 的高效性：</strong> 快速搭建響應式佈局，極大地提升了開發效率。</li>
+                <li><strong>Vanilla JS 的靈活性：</strong> 雖然有許多框架，但純 JavaScript 在實現特定互動時依然強大且輕量。</li>
+                <li><strong>持續學習與迭代：</strong> 每次修改和優化，都是一次學習和提升的機會。</li>
+            </ul>
+            <p>
+                未來，我將持續完善這個應用程式，並希望能在其他專案中應用這些寶貴的經驗。
+            </p>
+
+            <div class="text-center mt-8">
+                <a href="blog.html" class="inline-block bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                    ← 返回部落格主頁
+                </a>
+            </div>
+        </article>
+
+    </main>
+
+    <footer class="bg-neutral-800 text-neutral-300 py-8 mt-12">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>© <span id="currentYear"></span> 蔡宗諭。版權所有。</p>
+            <p class="text-sm mt-1">此為個人部落格文章頁面。</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
