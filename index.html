@@ -162,14 +162,16 @@
     <footer class="bg-neutral-800 text-neutral-300 py-8 mt-12">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 footer-info">
             
-            <div class="mb-4 text-sm">
-                <span class="mr-2">總訪問人次：</span>
-                <img src="https://hit.yandex/stat?id=YOUR_PROJECT_ID_HERE&cnt=1" alt="Hit Counter" class="inline-block" style="height: 18px;">
-                <p class="text-xs text-neutral-400 mt-1">（請替換上方的 'YOUR_PROJECT_ID_HERE' 為您註冊計數服務後獲得的專屬 ID）</p>
+            <div class="mb-4 text-sm flex flex-col items-center space-y-2">
+                
+                <div class="text-sm text-neutral-400">
+                    [<a href="https://www.freecounterstat.com" title="website counter"><img src="https://counter1.optistats.ovh/private/freecounterstat.php?c=5ljn6n2j56aau72s7bspdwe266nq63eb" border="0" title="website counter" alt="website counter"></a>]
+                </div>
+
+
+                <p class="text-sm">網站生成日期：<span id="currentDate"></span></p>
             </div>
             
-            <p class="text-sm mb-2">網站生成日期：<span id="currentDate"></span></p>
-
             <p>© <span id="currentYear"></span> 蔡宗諭。版權所有。</p>
             <p class="text-xs text-neutral-500 mt-1">此為個人作品展示頁面。</p>
         </div>
