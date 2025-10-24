@@ -25,6 +25,14 @@
                 height: 350px;
             }
         }
+        /* 新增：計數器和日期容器的樣式 */
+        .footer-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
     </style>
     </head>
 <body class="bg-stone-100 text-neutral-800">
@@ -106,13 +114,13 @@
                 
                 <a href="https://destiny-banon-10a.notion.site/1910d0ad4a4781bca40adf69c0f9b630" target="_blank" rel="noopener noreferrer" class="block">
                     <button class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
-                        微處理機技術
+                        微處理機技術 (Notion)
                     </button>
                 </a>
                 
                 <a href="https://destiny-banon-10a.notion.site/Arduino-LED-2900d0ad4a4780069132f3f24b3b2d79?source=copy_link" target="_blank" rel="noopener noreferrer" class="block">
                     <button class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
-                        Arduino期末專案:LED矩陣射擊遊戲
+                        Arduino期末專案: LED矩陣射擊遊戲
                     </button>
                 </a>
 
@@ -152,4 +160,28 @@
     </main>
 
     <footer class="bg-neutral-800 text-neutral-300 py-8 mt-12">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 footer-info">
+            
+            <div class="mb-4 text-sm">
+                <span class="mr-2">總訪問人次：</span>
+                <img src="https://hit.yandex/stat?id=YOUR_PROJECT_ID_HERE&cnt=1" alt="Hit Counter" class="inline-block" style="height: 18px;">
+                <p class="text-xs text-neutral-400 mt-1">（請替換上方的 'YOUR_PROJECT_ID_HERE' 為您註冊計數服務後獲得的專屬 ID）</p>
+            </div>
+            
+            <p class="text-sm mb-2">網站生成日期：<span id="currentDate"></span></p>
+
+            <p>© <span id="currentYear"></span> 蔡宗諭。版權所有。</p>
+            <p class="text-xs text-neutral-500 mt-1">此為個人作品展示頁面。</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // 顯示當前日期
+        const now = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Asia/Taipei' };
+        document.getElementById('currentDate').textContent = now.toLocaleDateString('zh-TW', options);
+    </script>
+</body>
+</html>
